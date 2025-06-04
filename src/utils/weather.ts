@@ -8,20 +8,16 @@ export async function fetchWeather({
   units,
   signal,
 }: IWeatherParams) {
-  try {
-    const URL =
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}` +
-      `&units=${units === 'celsius' ? 'metric' : 'imperial'}` +
-      `&appid=${API_KEY}`;
+  const URL =
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}` +
+    `&units=${units === 'celsius' ? 'metric' : 'imperial'}` +
+    `&appid=${API_KEY}`;
 
-    const response = await fetch(URL, { signal });
+  const response = await fetch(URL, { signal });
 
-    if (!response.ok) throw new Error('Failed to fetch weather data');
+  if (!response.ok) throw new Error('Failed to fetch weather data');
 
-    return response.json();
-  } catch (error) {
-    throw new Error(`Something went wrong: ${error}`);
-  }
+  return response.json();
 }
 
 export const getWeatherIconUrl = (iconCode: string) => {
