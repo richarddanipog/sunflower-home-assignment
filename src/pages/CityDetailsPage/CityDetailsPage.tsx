@@ -72,7 +72,7 @@ const CityDetailsPage = () => {
       <h1 className={styles.cityTitle}>Details for {cityName}</h1>
       <p className={styles.units}>Units: {displayUnits}</p>
       {selectedCity && (
-        <div className={styles.infoSection}>
+        <div className={styles.infoSection} data-testid="city-info">
           <div>
             <b>Coordinates:</b> {selectedCity.coords.lat},{' '}
             {selectedCity.coords.lng}

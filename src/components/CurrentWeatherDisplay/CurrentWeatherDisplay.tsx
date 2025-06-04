@@ -13,7 +13,7 @@ const CurrentWeatherDisplay: React.FC<CurrentWeatherDisplayProps> = ({
   displayUnits,
 }) => {
   return (
-    <div className={styles.currentWeather}>
+    <div className={styles.currentWeather} data-testid="current-weather">
       <div className={styles.weatherStatus}>
         <h2>Current Weather</h2>
         <img
