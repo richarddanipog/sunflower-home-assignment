@@ -1,0 +1,8 @@
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  letter-spacing: 0.01em;
+}

@@ -1,0 +1,24 @@
+.filters {
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 20px;
+  align-items: flex-end;
+  align-items: flex-start;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+}
+
+@media (max-width: 960px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    height: auto;
+  }
+}

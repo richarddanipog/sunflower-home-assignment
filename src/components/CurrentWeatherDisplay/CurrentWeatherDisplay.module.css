@@ -1,0 +1,24 @@
+.currentWeather {
+  background: #e0e0e0;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  color: #333;
+}
+
+.currentWeather h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.weatherStatus {
+  display: flex;
+  align-items: center;
+}
+
+.weatherIcon {
+  width: 60px;
+  height: 60px;
+}
