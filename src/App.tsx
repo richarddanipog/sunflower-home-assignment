@@ -10,15 +10,36 @@ const CityDetailsPage = lazy(
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const App = () => (
-  <ErrorBoundary>
-    <Suspense fallback={<LoadingSpinner />}>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/city/:cityName" element={<CityDetailsPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
-  </ErrorBoundary>
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <MainPage />
+          </Suspense>
+        </ErrorBoundary>
+      }
+    />
+    <Route
+      path="/city/:cityName"
+      element={
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <CityDetailsPage />
+          </Suspense>
+        </ErrorBoundary>
+      }
+    />
+    <Route
+      path="*"
+      element={
+        <Suspense fallback={<LoadingSpinner />}>
+          <NotFound />
+        </Suspense>
+      }
+    />
+  </Routes>
 );
 
 export default App;

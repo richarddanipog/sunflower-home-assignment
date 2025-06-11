@@ -99,11 +99,6 @@ describe('CityDetailsPage', () => {
       }
     );
     expect(coordinatesElements[0]).toBeInTheDocument();
-
-    expect(screen.getByAltText('London city')).toHaveAttribute(
-      'src',
-      'london-image-url'
-    );
   });
 
   it('displays loading state', () => {

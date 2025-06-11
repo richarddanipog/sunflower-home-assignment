@@ -7,6 +7,7 @@ import styles from './CityDetailsPage.module.css';
 import { getSelectedCity, getUnits } from '../../store/appSelectors';
 import CurrentWeatherDisplay from '../../components/CurrentWeatherDisplay/CurrentWeatherDisplay';
 import ForecastDisplay from '../../components/ForecastDisplay/ForecastDisplay';
+import CityImage from '../../components/CityImage/CityImage';
 
 const CityDetailsPage = () => {
   const navigate = useNavigate();
@@ -62,13 +63,9 @@ const CityDetailsPage = () => {
       <button className={styles.backButton} onClick={goBack}>
         Back
       </button>
-      {selectedCity?.image && (
-        <img
-          src={selectedCity.image}
-          alt={cityName + ' city'}
-          className={styles.cityImage}
-        />
-      )}
+      <div className={styles.cityImage}>
+        {selectedCity?.image && <CityImage city={selectedCity} />}
+      </div>
       <h1 className={styles.cityTitle}>Details for {cityName}</h1>
       <p className={styles.units}>Units: {displayUnits}</p>
       {selectedCity && (

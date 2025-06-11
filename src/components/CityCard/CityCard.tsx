@@ -1,6 +1,7 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { memo } from 'react';
 import styles from './CityCard.module.css';
 import type { ICity } from '../../types/city';
+import CityImage from '../CityImage/CityImage';
 
 interface CityCardProps {
   city: ICity;
@@ -8,32 +9,7 @@ interface CityCardProps {
   isVisible?: boolean;
 }
 
-const CityCard: React.FC<CityCardProps> = ({
-  city,
-  onClick,
-  isVisible = true,
-}) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  useEffect(() => {
-    if (isVisible && !imageLoaded && !imageError) {
-      const img = new Image();
-      img.src = city.image;
-      img.onload = handleImageLoad;
-      img.onerror = handleImageError;
-    }
-  }, [isVisible, city.image, imageLoaded, imageError]);
-
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    setImageError(true);
-    setImageLoaded(true);
-  };
-
+const CityCard: React.FC<CityCardProps> = ({ city, onClick }) => {
   return (
     <div
       className={styles.card}
@@ -42,24 +18,7 @@ const CityCard: React.FC<CityCardProps> = ({
       role="button"
       aria-label={`View details for ${city.name}, ${city.country}`}
     >
-      <div className={styles.imageContainer}>
-        {!imageLoaded && <div className={styles.skeleton} />}
-        {!imageError ? (
-          <img
-            src={city.image}
-            alt={`${city.name}, ${city.country}`}
-            className={`${styles.image} ${imageLoaded ? styles.loaded : ''}`}
-            loading="lazy"
-            decoding="async"
-            onLoad={handleImageLoad}
-            onError={handleImageError}
-          />
-        ) : (
-          <div className={styles.fallbackImage}>
-            <span>{city.name[0]}</span>
-          </div>
-        )}
-      </div>
+      <CityImage city={city} />
       <div className={styles.overlay}>
         <h2 className={styles.name}>{city.name}</h2>
         <p className={styles.country}>{city.country}</p>
